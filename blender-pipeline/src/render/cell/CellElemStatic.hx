@@ -1,0 +1,54 @@
+package render.cell;
+
+import peote.view.Buffer;
+
+class CellElemStatic implements peote.view.Element
+{
+	public static var buffer:Buffer<CellElemStatic>;  // <- TODO ... BIG PROBLEM IF MULTIPLE VIEWS LATER
+
+	// position in pixel (relative to upper left corner of Display)
+	@posX public var x:Int = 0;
+	@posY public var y:Int = 0;
+		
+	// size in pixel
+	// TODO: optimize
+	@const @sizeX public var w:Int = 32;
+	@const @sizeY public var h:Int = 32;
+	
+	// tile number
+	@texTile public var tile:Int = 0;
+
+	// texture unit (sheet index!)
+	@texUnit public var sheet:Int=0;
+
+	// scale out the gap;
+	// @const @texSizeX var texSizeX:Float;
+	// @const @texSizeY var texSizeY:Float;
+	// var OPTIONS = { texRepeatX:false, texRepeatY:false };
+
+	// --------------------------------------------------------------------------
+	
+	// public function new(tile:Int, sheet:Int, x:Int, y:Int, w:Int, h:Int)
+	public function new(tile:Int, x:Int, y:Int)
+	{
+		this.tile = tile;
+		// this.sheet = sheet;
+
+		this.x = x;
+		this.y = y;
+		
+		// this.w = w;
+		// this.h = h;
+	}
+
+	public function add() {
+		buffer.addElement(this);
+	}
+	public function update() {
+		buffer.updateElement(this);
+	}
+	public function remove() {
+		buffer.removeElement(this);
+	}
+
+}

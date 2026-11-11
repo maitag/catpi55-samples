@@ -1,0 +1,21 @@
+package actors;
+
+enum abstract ActorType(Int) from Int to Int {
+	
+	var STONE1x1;
+	var STONE1x2;
+	var STONE2x2;
+	
+	var CROSS;
+	var EDGEBR3x3;
+	var HAXE;
+	
+	var LIME; //thank to old friend joshua:
+	
+	var OPENFL;
+	var FLIXEL;
+	
+	var SEMMI;
+
+	// public static var length(get, never):Int; static inline function get_length():Int return ((SEMMI+1) : Int);
+}
